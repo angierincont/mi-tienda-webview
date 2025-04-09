@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi App Web</title>
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Fake Store</h1>
+    <input type="text" id="buscador" placeholder="Buscar productos..." />
+    <select id="filtroCategoria"></select>
+  </header>
+
+  <nav>
+    <button onclick="mostrarPestaña(0)">Productos</button>
+    <button onclick="mostrarPestaña(1)">Favoritos</button>
+    <button onclick="mostrarPestaña(2)">Registro</button>
+    <button onclick="mostrarPestaña(3)">Feature</button>
+  </nav>
+
+  <main>
+    <section id="productos" class="pestaña activa"></section>
+    <section id="favoritos" class="pestaña"></section>
+    <section id="registro" class="pestaña">
+      <form onsubmit="registrarUsuario(event)">
+        <input type="text" placeholder="Nombre" required />
+        <input type="email" placeholder="Correo" required />
+        <input type="text" placeholder="Usuario" required />
+        <input type="password" placeholder="Contraseña" required />
+        <input type="tel" placeholder="Teléfono" required />
+        <input type="text" placeholder="Dirección" required />
+        <input type="number" placeholder="Edad" required />
+        <button type="submit">Registrar</button>
+      </form>
+    </section>
+    <section id="feature" class="pestaña">
+      <button onclick="toggleDarkMode()">Modo oscuro</button>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/searchFilter.js"></script>
+  <script src="js/favorites.js"></script>
+  <script src="js/register.js"></script>
+  <script src="js/originalFeature.js"></script>
+</body>
+</html>
