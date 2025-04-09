@@ -1,5 +1,5 @@
 function obtenerFavoritos() {
-  const favoritos = localStorage.getItem("favoritos-tab");
+  const favoritos = localStorage.getItem("favoritos");
   return favoritos ? JSON.parse(favoritos) : [];
 }
 
