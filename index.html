@@ -3,49 +3,88 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mi App Web</title>
+  <title>Tienda Web - API Platzi</title>
   <link rel="stylesheet" href="styles/style.css" />
+  <link rel="icon" href="icon.png" type="image/png" />
 </head>
 <body>
+
+  <!-- Splash -->
   <header>
-    <h1>Fake Store</h1>
+    <h1>🛍️ Tienda Web</h1>
     <input type="text" id="buscador" placeholder="Buscar productos..." />
-    <select id="filtroCategoria"></select>
+    <select id="filtro-categoria">
+      <option value="">Todas las categorías</option>
+    </select>
   </header>
 
-  <nav>
-    <button onclick="mostrarPestaña(0)">Productos</button>
-    <button onclick="mostrarPestaña(1)">Favoritos</button>
-    <button onclick="mostrarPestaña(2)">Registro</button>
-    <button onclick="mostrarPestaña(3)">Feature</button>
-  </nav>
-
+  <!-- Pestañas -->
   <main>
-    <section id="productos" class="pestaña activa"></section>
-    <section id="favoritos" class="pestaña"></section>
-    <section id="registro" class="pestaña">
-      <form onsubmit="registrarUsuario(event)">
+    <!-- 🛒 Pestaña Productos -->
+    <section id="productos-tab" class="pestaña activa">
+      <h2>Productos</h2>
+      <div id="productos"></div>
+    </section>
+
+    <!-- ❤️ Pestaña Favoritos -->
+    <section id="favoritos-tab" class="pestaña">
+      <h2>Favoritos</h2>
+      <div id="lista-favoritos"></div>
+    </section>
+
+    <!-- 📋 Pestaña Categorías -->
+    <section id="categorias-tab" class="pestaña">
+      <h2>Categorías</h2>
+      <ul id="lista-categorias"></ul>
+    </section>
+
+    <!-- 📝 Pestaña Registro -->
+    <section id="registro-tab" class="pestaña">
+      <h2>Registro de Usuario</h2>
+      <form id="form-registro">
         <input type="text" placeholder="Nombre" required />
+        <input type="text" placeholder="Apellido" required />
         <input type="email" placeholder="Correo" required />
         <input type="text" placeholder="Usuario" required />
         <input type="password" placeholder="Contraseña" required />
+        <input type="text" placeholder="Ciudad" required />
         <input type="tel" placeholder="Teléfono" required />
-        <input type="text" placeholder="Dirección" required />
-        <input type="number" placeholder="Edad" required />
-        <button type="submit">Registrar</button>
+        <button type="submit">Registrarse</button>
       </form>
     </section>
-    <section id="feature" class="pestaña">
-      <button onclick="toggleDarkMode()">Modo oscuro</button>
+
+    <!-- 🌟 Pestaña Feature Único -->
+    <section id="feature-tab" class="pestaña">
+      <h2>Modo Oscuro</h2>
+      <div id="feature">
+        <p>Pulsa el botón para cambiar el tema de la app:</p>
+        <button id="toggle-modo">🌙 Modo oscuro</button>
+      </div>
+    </section>
+
+    <!-- 📱 Pestaña Información -->
+    <section id="info-tab" class="pestaña">
+      <h2>Info</h2>
+      <p>App desarrollada con Platzi Fake API.</p>
     </section>
   </main>
 
+  <!-- Menú inferior -->
+  <nav>
+    <button onclick="mostrarPestaña('productos-tab')">🛒</button>
+    <button onclick="mostrarPestaña('favoritos-tab')">❤️</button>
+    <button onclick="mostrarPestaña('registro-tab')">📝</button>
+    <button onclick="mostrarPestaña('feature-tab')">✨</button>
+  </nav>
+
+  <!-- Scripts -->
+  <script src="js/navegación.js"></script>
   <script src="js/api.js"></script>
-  <script src="js/navigation.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/searchFilter.js"></script>
-  <script src="js/favorites.js"></script>
-  <script src="js/register.js"></script>
-  <script src="js/originalFeature.js"></script>
+  <script src="js/buscador.js"></script>
+  <script src="js/filtro.js"></script>
+  <script src="js/favoritos.js"></script>
+  <script src="js/registro.js"></script>
+  <script src="js/feature.js"></script>
+
 </body>
 </html>
