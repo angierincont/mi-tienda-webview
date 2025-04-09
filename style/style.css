@@ -1,0 +1,27 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+header, nav {
+  padding: 1em;
+  background: #f0f0f0;
+}
+input, select {
+  margin: 0.5em 0;
+  padding: 0.5em;
+}
+main {
+  padding: 1em;
+}
+.pestaña { display: none; }
+.pestaña.activa { display: block; }
+.card {
+  border: 1px solid #ccc;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+.dark {
+  background-color: #111;
+  color: white;
+}
