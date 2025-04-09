@@ -1,28 +1,28 @@
 :root {
-  --primario: #4f46e5;
-  --fondo: #f9fafb;
-  --texto: #111827;
+  --verde: #61e993;
+  --verde-oscuro: #19785f;
+  --verde-claro: #b1f4d5;
+  --negro: #282f3f;
   --blanco: #ffffff;
   --gris: #e5e7eb;
-  --oscuro: #1f2937;
-  --rojo: #dc2626;
+  --sombra: rgba(0, 0, 0, 0.1);
 }
 
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-color: var(--fondo);
-  color: var(--texto);
+  background: linear-gradient(to bottom, var(--verde-claro), var(--blanco));
+  color: var(--negro);
   transition: background-color 0.3s, color 0.3s;
 }
 
 body.dark {
-  background-color: var(--oscuro);
+  background: linear-gradient(to bottom, var(--negro), var(--verde-oscuro));
   color: var(--blanco);
 }
 
 header {
-  background-color: var(--primario);
+  background: linear-gradient(to right, var(--verde), var(--verde-oscuro));
   color: white;
   padding: 1rem;
   text-align: center;
@@ -63,7 +63,7 @@ h2 {
 .card {
   background-color: var(--blanco);
   border-radius: 16px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px var(--sombra);
   padding: 1rem;
   text-align: center;
   transition: transform 0.2s;
@@ -88,11 +88,11 @@ h2 {
 .card p {
   margin: 0.25rem 0;
   font-weight: bold;
-  color: var(--primario);
+  color: var(--verde-oscuro);
 }
 
 .card button {
-  background-color: var(--primario);
+  background-color: var(--verde);
   color: white;
   border: none;
   padding: 0.4rem 1rem;
@@ -102,7 +102,7 @@ h2 {
 }
 
 .card button:hover {
-  background-color: #3730a3;
+  background-color: #059669;
 }
 
 form {
@@ -120,7 +120,7 @@ form input {
 }
 
 form button {
-  background-color: var(--primario);
+  background-color: var(--verde);
   color: white;
   border: none;
   padding: 0.6rem;
@@ -129,7 +129,7 @@ form button {
 }
 
 form button:hover {
-  background-color: #3730a3;
+  background-color: #059669;
 }
 
 #feature {
@@ -138,7 +138,7 @@ form button:hover {
 }
 
 #toggle-modo {
-  background-color: var(--oscuro);
+  background-color: var(--verde-oscuro);
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -148,7 +148,7 @@ form button:hover {
 }
 
 #toggle-modo:hover {
-  background-color: #111827;
+  background-color: #022c22;
 }
 
 nav {
@@ -167,6 +167,7 @@ nav button {
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
+  color: var(--verde-oscuro);
 }
 
 ul {
@@ -174,24 +175,24 @@ ul {
 }
 
 .dark header {
-  background-color: #1e40af;
+  background: linear-gradient(to right, #022c22, #065f46);
 }
 
 .dark .card {
-  background-color: #374151;
+  background-color: #1f2937;
   color: white;
 }
 
 .dark form input {
-  background-color: #1f2937;
+  background-color: #374151;
   color: white;
   border: 1px solid #4b5563;
 }
 
 .dark nav {
-  background-color: #111827;
+  background-color: #0f172a;
 }
 
 .dark nav button {
-  color: white;
+  color: var(--verde-claro);
 }
