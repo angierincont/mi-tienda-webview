@@ -196,3 +196,34 @@ ul {
 .dark nav button {
   color: var(--verde-claro);
 }
+
+body {
+  background-image: url('../images/fondo-api.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+
+#presentacion-api {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  margin: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  color: #fff;
+}
+
+.api-image {
+  border: 2px dashed #fff;
+  padding: 1rem;
+  margin: 1rem auto;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.descripcion-api {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 10px;
+}
