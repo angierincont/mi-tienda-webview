@@ -1,20 +1,29 @@
-const formRegistro = document.getElementById("form-registro");
 
-formRegistro.addEventListener("submit", function (e) {
+
+import { db } from './firebase.js';
+import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+
+const form = document.getElementById("form-registro");
+
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
+  const inputs = form.querySelectorAll("input");
 
-  const datos = {
-    nombre: formRegistro.elements[0].value,
-    apellido: formRegistro.elements[1].value,
-    correo: formRegistro.elements[2].value,
-    usuario: formRegistro.elements[3].value,
-    contraseña: formRegistro.elements[4].value,
-    ciudad: formRegistro.elements[5].value,
-    telefono: formRegistro.elements[6].value,
-  };
+  try {
+    await addDoc(collection(db, "usuarios"), {
+      nombre: inputs[0].value,
+      apellido: inputs[1].value,
+      correo: inputs[2].value,
+      usuario: inputs[3].value,
+      contraseña: inputs[4].value,
+      ciudad: inputs[5].value,
+      telefono: inputs[6].value
+    });
 
-  console.log("Usuario registrado:", datos);
-  alert("¡Registro exitoso!");
-
-  formRegistro.reset();
+    alert("✅ Usuario registrado exitosamente.");
+    form.reset();
+  } catch (error) {
+    console.error("❌ Error al registrar: ", error);
+    alert("Error al registrar usuario. Revisa la consola.");
+  }
 });
