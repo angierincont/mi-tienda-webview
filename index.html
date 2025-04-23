@@ -67,6 +67,27 @@
       <h2>Info</h2>
       <p>App desarrollada con Platzi Fake API.</p>
     </section>
+
+    <!-- 🧾 Pestaña Presentación de la API -->
+    <section id="presentacion-api" class="pestaña">
+      <h2>Platzi Fake API</h2>
+
+      <!-- Imagen temática PNG (espacio) -->
+      <div class="api-image">
+        <p>[Aquí va la imagen PNG relacionada con la API]</p>
+        <img src="images/api-theme.png" alt="Tema Platzi API" style="max-width: 200px;" />
+      </div>
+
+      <!-- Cuadro de descripción -->
+      <div class="descripcion-api">
+        <h3>¿Qué es la Platzi Fake API?</h3>
+        <p>La Platzi Fake API es una API REST que simula un entorno de ecommerce. Permite practicar desarrollo web con datos de productos, usuarios y autenticación de manera gratuita.</p>
+      </div>
+
+      <!-- Datos adicionales -->
+      <p><strong>Versión de la app:</strong> V.1.0.0</p>
+      <p><strong>GitHub:</strong> <a href="https://github.com/angierincon123" target="_blank">angierincon123</a></p>
+    </section>
   </main>
 
   <!-- Menú inferior -->
@@ -75,7 +96,13 @@
     <button onclick="mostrarPestaña('favoritos-tab')">❤️</button>
     <button onclick="mostrarPestaña('registro-tab')">📝</button>
     <button onclick="mostrarPestaña('feature-tab')">✨</button>
+    <button onclick="mostrarPestaña('presentacion-api')">🧾</button>
   </nav>
+
+  <!-- Pie de página -->
+  <footer style="text-align: center; padding: 1rem; background-color: rgba(0,0,0,0.6); color: #00ffd0;">
+    Desarrollado por Angie Rincón
+  </footer>
 
   <!-- Scripts -->
   <script src="js/navegación.js"></script>
@@ -83,8 +110,8 @@
   <script src="js/buscador.js"></script>
   <script src="js/filtro.js"></script>
   <script src="js/favorites.js"></script>
-  <script src="js/register.js"></script>
   <script src="js/Feature.js"></script>
+  <script type="module" src="js/register.js"></script>
 
 </body>
 </html>
