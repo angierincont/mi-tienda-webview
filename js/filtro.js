@@ -1,20 +1,16 @@
-const filtroCategoria = document.getElementById("filtro-categoria");
+// js/filtro.js
+import { actualizarFiltroCategoria } from "./buscador.js";
+import { cargarCategorias } from "./api.js";
 
-filtroCategoria.addEventListener("change", async () => {
-  const categoriaId = filtroCategoria.value;
+const filtroSelect = document.getElementById("filtro-categoria");
 
-  try {
-    let url = "https://api.escuelajs.co/api/v1/products";
+async function initFiltro() {
+  await cargarCategorias();
 
-    if (categoriaId) {
-      url = `https://api.escuelajs.co/api/v1/categories/${categoriaId}/products`;
-    }
+  filtroSelect.addEventListener("change", e => {
+    const categoriaId = e.target.value || null;
+    actualizarFiltroCategoria(categoriaId);
+  });
+}
 
-    const res = await fetch(url);
-    const productos = await res.json();
-
-    mostrarProductos(productos);
-  } catch (error) {
-    console.error("Error al filtrar productos:", error);
-  }
-});
+initFiltro();
