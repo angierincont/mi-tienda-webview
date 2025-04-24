@@ -1,142 +1,270 @@
 <!DOCTYPE html>
+<!-- Define el tipo de documento como HTML5 -->
+
 <html lang="es">
+<!-- Elemento raíz del documento HTML, con atributo lang="es" para indicar que el idioma es español -->
+
 <head>
   <meta charset="UTF-8" />
+  <!-- Define la codificación de caracteres como UTF-8 -->
+
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Configura la ventana gráfica para que el ancho sea igual al del dispositivo y la escala inicial sea 1 -->
+
   <title>API EscuelaJS - Productos</title>
+  <!-- Título que se muestra en la pestaña del navegador -->
+
   <link rel="stylesheet" href="style/style.css" />
+  <!-- Enlace a la hoja de estilos externa ubicada en style/style.css -->
+
 </head>
+
 <body>
+
+  <!-- Menú de navegación -->
+  <nav>
+    <a href="#descripcion-api">API</a>
+    <!-- Enlace que lleva a la sección con id "descripcion-api" -->
+
+    <a href="#controls">Buscar</a>
+    <!-- Enlace que lleva a la sección con id "controls" -->
+
+    <a href="#productos">Productos</a>
+    <!-- Enlace que lleva a la sección con id "productos" -->
+
+    <a href="#favoritos">Favoritos</a>
+    <!-- Enlace que lleva a la sección con id "favoritos" -->
+
+    <a href="#miFormulario">Formulario</a>
+    <!-- Enlace que lleva al formulario con id "miFormulario" -->
+
+    <a href="#mensaje">Mensaje</a>
+    <!-- Enlace que lleva al elemento con id "mensaje" -->
+
+    <a href="#" onclick="activarModoOscuro()">Originalidad 🌙</a>
+    <!-- Enlace que ejecuta la función activarModoOscuro() al hacer clic para cambiar al modo oscuro -->
+  </nav>
 
   <header>
     <h1>platzi fake api</h1>
+    <!-- Encabezado principal de la página -->
   </header>
 
   <main>
 
+    <!-- Descripción de la API -->
     <section id="descripcion-api" class="info-api">
+      <!-- Sección con información sobre la API, identificada con id y clase -->
+
       <img src="img/apifafe.png" alt="Logo API EscuelaJS" class="logo-api" />
+      <!-- Imagen con logo de la API, con atributo alt para accesibilidad -->
+
       <div class="descripcion-cuadro">
+        <!-- Contenedor para la descripción -->
+
         <h2>Acerca de la API</h2>
+        <!-- Subtítulo -->
+
         <p>
           Esta API pública provee datos de productos reales para practicar 
           desarrollo web y consumir servicios REST con JavaScript.
+          <!-- Párrafo que describe brevemente la API -->
         </p>
       </div>
     </section>
 
+    <!-- Buscador y filtro -->
     <section id="controls" class="controls">
+      <!-- Sección que contiene controles para buscar y filtrar productos -->
+
       <input type="text" id="buscador" placeholder="Buscar productos..." aria-label="Buscar productos" />
-      
+      <!-- Campo de texto para buscar productos, con un placeholder y etiqueta accesible -->
+
       <select id="filtro-categoria" aria-label="Filtrar por categoría">
+        <!-- Lista desplegable para filtrar por categoría -->
+
         <option value="">Todas las categorías</option>
+        <!-- Opción por defecto que muestra todas las categorías -->
       </select>
     </section>
 
+    <!-- Productos -->
     <section id="productos" class="productos" aria-live="polite" aria-label="Lista de productos">
+      <!-- Sección donde se cargarán dinámicamente los productos. 
+           aria-live="polite" indica que los cambios serán anunciados con prioridad baja para lectores de pantalla -->
+
       <!-- Productos cargados dinámicamente aquí -->
+      <!-- Comentario indicando que el contenido será generado vía JavaScript -->
     </section>
 
+    <!-- Favoritos -->
     <section id="favoritos" class="favoritos">
+      <!-- Sección para mostrar los productos favoritos -->
+
       <h2>Favoritos</h2>
+      <!-- Título de la sección -->
+
       <div id="lista-favoritos" aria-live="polite" aria-label="Lista de productos favoritos">
+        <!-- Contenedor donde se mostrarán los favoritos dinámicamente,
+             con atributos para accesibilidad -->
+
         <!-- Favoritos cargados dinámicamente -->
+        <!-- Comentario indicando contenido dinámico -->
       </div>
     </section>
 
   </main>
+
+  <!-- Formulario -->
   <form id="miFormulario">
+    <!-- Formulario con id para manipulación mediante JS -->
+
     <label>Nombre:
       <input type="text" name="nombre" required />
+      <!-- Campo de texto para el nombre, obligatorio -->
     </label><br/>
+
     <label>Apellido:
       <input type="text" name="apellido" required />
+      <!-- Campo de texto para el apellido, obligatorio -->
     </label><br/>
+
     <label>Correo:
       <input type="email" name="correo" required />
+      <!-- Campo de email, obligatorio -->
     </label><br/>
+
     <label>Teléfono:
       <input type="tel" name="telefono" required />
+      <!-- Campo para teléfono, obligatorio -->
     </label><br/>
+
     <label>Dirección:
       <input type="text" name="direccion" required />
+      <!-- Campo de texto para dirección, obligatorio -->
     </label><br/>
+
     <label>Ciudad:
       <input type="text" name="ciudad" required />
+      <!-- Campo de texto para ciudad, obligatorio -->
     </label><br/>
+
     <label>Comentario:
       <textarea name="comentario" rows="3" required></textarea>
+      <!-- Área de texto para comentario, obligatorio, con 3 filas visibles -->
     </label><br/>
+
     <button type="submit">Enviar</button>
+    <!-- Botón para enviar el formulario -->
   </form>
+
+  <!-- Mensaje de confirmación o error -->
   <div id="mensaje"></div>
-  <!-- Firebase App (the core Firebase SDK) -->
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-<!-- Firebase Firestore -->
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+  <!-- Contenedor donde se mostrará mensaje después de enviar formulario -->
 
-<script>
-  // Configuración de Firebase (tuya)
-  const firebaseConfig = {
-    apiKey: "AIzaSyD159PzqzNXQpMutpECpWzJcQ_62_DSnYU",
-    authDomain: "tiendaplatzi-a6241.firebaseapp.com",
-    projectId: "tiendaplatzi-a6241",
-    storageBucket: "tiendaplatzi-a6241.firebasestorage.app",
-    messagingSenderId: "286259925506",
-    appId: "1:286259925506:web:71ed6f6a489aa197b9cd1b"
-  };
+  <!-- Firebase App -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <!-- Librería Firebase para inicializar la app -->
 
-  // Inicializar Firebase
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+  <!-- Librería Firebase para usar Firestore (base de datos) -->
 
-  // Referencia al formulario y mensaje
-  const form = document.getElementById('miFormulario');
-  const mensajeDiv = document.getElementById('mensaje');
-
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-
-    // Tomar datos del formulario
-    const datos = {
-      nombre: form.nombre.value.trim(),
-      apellido: form.apellido.value.trim(),
-      correo: form.correo.value.trim(),
-      telefono: form.telefono.value.trim(),
-      direccion: form.direccion.value.trim(),
-      ciudad: form.ciudad.value.trim(),
-      comentario: form.comentario.value.trim(),
-      fecha: new Date()
+  <script>
+    // Configuración de Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyD159PzqzNXQpMutpECpWzJcQ_62_DSnYU",
+      authDomain: "tiendaplatzi-a6241.firebaseapp.com",
+      projectId: "tiendaplatzi-a6241",
+      storageBucket: "tiendaplatzi-a6241.firebasestorage.app",
+      messagingSenderId: "286259925506",
+      appId: "1:286259925506:web:71ed6f6a489aa197b9cd1b"
     };
+    // Objeto con los datos de configuración para conectar la app a Firebase
 
-    // Guardar en Firestore en colección 'usuarios'
-    db.collection('usuarios').add(datos)
-      .then(() => {
-        mensajeDiv.textContent = 'Datos guardados correctamente ✅';
-        mensajeDiv.style.color = 'lightgreen';
-        form.reset();
-      })
-      .catch(error => {
-        mensajeDiv.textContent = 'Error al guardar: ' + error.message;
-        mensajeDiv.style.color = 'red';
-      });
-  });
-</script>
+    // Inicialización de Firebase
+    firebase.initializeApp(firebaseConfig);
+    // Inicializa la app Firebase con la configuración dada
 
-  
+    const db = firebase.firestore();
+    // Crea una referencia a la base de datos Firestore para usar en la app
 
+    // Envío del formulario
+    const form = document.getElementById('miFormulario');
+    // Obtiene el formulario por su id
+
+    const mensajeDiv = document.getElementById('mensaje');
+    // Obtiene el div donde se mostrará el mensaje
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      // Previene el envío tradicional del formulario para manejarlo con JS
+
+      const datos = {
+        nombre: form.nombre.value.trim(),
+        apellido: form.apellido.value.trim(),
+        correo: form.correo.value.trim(),
+        telefono: form.telefono.value.trim(),
+        direccion: form.direccion.value.trim(),
+        ciudad: form.ciudad.value.trim(),
+        comentario: form.comentario.value.trim(),
+        fecha: new Date()
+      };
+      // Crea un objeto con los datos ingresados en el formulario,
+      // eliminando espacios extra y agregando la fecha actual
+
+      db.collection('usuarios').add(datos)
+        .then(() => {
+          mensajeDiv.textContent = 'Datos guardados correctamente ✅';
+          mensajeDiv.style.color = 'lightgreen';
+          form.reset();
+        })
+        .catch(error => {
+          mensajeDiv.textContent = 'Error al guardar: ' + error.message;
+          mensajeDiv.style.color = 'red';
+        });
+      // Intenta guardar los datos en la colección "usuarios" de Firestore.
+      // Si tiene éxito, muestra mensaje positivo y limpia el formulario.
+      // Si falla, muestra mensaje de error con el detalle.
+    });
+
+    // Activar modo oscuro
+    function activarModoOscuro() {
+      document.body.classList.toggle('dark-mode');
+      // Cambia la clase 'dark-mode' en el body para activar/desactivar modo oscuro
+    }
+  </script>
+
+  <!-- Footer -->
   <footer>
     <div class="footer-content">
       <p><strong>Estudiante:</strong> Angie Rincon</p>
-      <p><strong>GitHub:</strong> <a href="https://github.com/angierincont" target="_blank" rel="noopener noreferrer">angierincont</a></p>
+      <!-- Nombre del estudiante -->
+
+      <p><strong>GitHub:</strong> 
+        <a href="https://github.com/angierincont" target="_blank" rel="noopener noreferrer">
+          angierincont
+        </a>
+      </p>
+      <!-- Enlace al perfil de GitHub que se abre en una pestaña nueva con seguridad -->
+
       <p><strong>Versión de la app:</strong> V.1.0.0</p>
+      <!-- Información de la versión actual de la app -->
     </div>
   </footer>
 
+  <!-- Módulos JS -->
   <script type="module" src="js/api.js"></script>
+  <!-- Módulo JavaScript que maneja la API -->
+
   <script type="module" src="js/buscador.js"></script>
+  <!-- Módulo JavaScript que controla la funcionalidad del buscador -->
+
   <script type="module" src="js/filtro.js"></script>
+  <!-- Módulo JavaScript que controla el filtro de categorías -->
+
   <script src="js/favoritos.js"></script>
+  <!-- Script JavaScript para gestionar los productos favoritos -->
 
 </body>
+
 </html>

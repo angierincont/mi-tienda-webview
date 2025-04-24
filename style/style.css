@@ -1,264 +1,330 @@
 :root {
-  --color-principal: #8019a8;
-  --color-secundario: #d9a1f5;
-  --color-fondo: #000000;
-  --color-texto: #111827;
-  --color-blanco: #fff;
-  --color-error: #dc2626;
+  /* Variables CSS para colores usados en toda la web */
+  --color-principal: #8019a8;      /* Color principal púrpura oscuro */
+  --color-secundario: #d9a1f5;    /* Color secundario lila claro */
+  --color-fondo: #000000;          /* Color de fondo negro */
+  --color-texto: #111827;          /* Color del texto (gris oscuro) */
+  --color-blanco: #fff;            /* Color blanco */
+  --color-error: #dc2626;          /* Color rojo para errores */
 }
 
 * {
-  box-sizing: border-box;
+  box-sizing: border-box;  /* Incluye padding y border en el tamaño total de elementos */
 }
 
 body {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: url("../img/fondo_api.png") no-repeat center center fixed;
-  background-size: cover;
-  color: var(--color-texto);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  margin: 0; /* Elimina margen por defecto */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente base */
+  background: url("../img/fondo_api.png") no-repeat center center fixed; /* Imagen de fondo fija centrada */
+  background-size: cover; /* Ajusta imagen para cubrir todo el fondo */
+  color: var(--color-texto); /* Color del texto usando variable */
+  min-height: 100vh; /* Altura mínima igual a la altura de la ventana */
+  display: flex; /* Flexbox para layout */
+  flex-direction: column; /* Elementos en columna */
 }
 
 header {
-  background-color: var(--color-principal);
-  color: var(--color-blanco);
-  padding: 1rem;
-  text-align: center;
-  font-weight: 700;
-  font-size: 2rem;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+  background-color: var(--color-principal); /* Fondo púrpura */
+  color: var(--color-blanco); /* Texto blanco */
+  padding: 1rem; /* Espaciado interno */
+  text-align: center; /* Texto centrado */
+  font-weight: 700; /* Texto en negrita */
+  font-size: 2rem; /* Tamaño de fuente grande */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4); /* Sombra sutil en texto */
 }
 
 main {
-  flex: 1;
-  padding: 1rem;
-  background: rgba(222, 182, 223, 0.85);
-  max-width: 1200px;
-  margin: 1rem auto;
-  border-radius: 8px;
-  box-shadow: 0 8px 16px rgba(233, 119, 119, 0.15);
+  flex: 1; /* Toma todo el espacio disponible */
+  padding: 1rem; /* Espaciado interno */
+  background: rgba(222, 182, 223, 0.85); /* Fondo semitransparente lila */
+  max-width: 1200px; /* Ancho máximo */
+  margin: 1rem auto; /* Margen arriba/abajo y centrado horizontal */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 8px 16px rgba(233, 119, 119, 0.15); /* Sombra suave */
 }
 
 .info-api {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  display: flex; /* Layout flex */
+  align-items: center; /* Alinea verticalmente al centro */
+  gap: 1rem; /* Espacio entre hijos */
+  margin-bottom: 1rem; /* Margen inferior */
 }
 
 .logo-api {
-  width: 80px;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 0 8px var(--color-principal);
+  width: 80px; /* Ancho fijo */
+  height: auto; /* Altura proporcional */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 0 8px var(--color-principal); /* Sombra púrpura */
 }
 
 .descripcion-cuadro {
-  flex: 1;
-  background-color: var(--color-secundario);
-  color: var(--color-blanco);
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 0 8px var(--color-principal);
+  flex: 1; /* Ocupa espacio disponible */
+  background-color: var(--color-secundario); /* Fondo lila claro */
+  color: var(--color-blanco); /* Texto blanco */
+  padding: 1rem; /* Espaciado interno */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 0 8px var(--color-principal); /* Sombra púrpura */
 }
 
 .controls {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: flex; /* Flexbox */
+  gap: 1rem; /* Espacio entre controles */
+  margin-bottom: 1rem; /* Margen abajo */
+  flex-wrap: wrap; /* Permite que se envuelvan a otra línea */
+  justify-content: center; /* Centra los elementos horizontalmente */
 }
 
 #buscador,
 #filtro-categoria {
-  flex: 1;
-  min-width: 200px;
-  padding: 0.6rem 1rem;
-  font-size: 1rem;
-  border: 2px solid var(--color-principal);
-  border-radius: 6px;
-  transition: border-color 0.3s ease;
+  flex: 1; /* Ocupan espacio flexible */
+  min-width: 200px; /* Ancho mínimo */
+  padding: 0.6rem 1rem; /* Espaciado interno vertical y horizontal */
+  font-size: 1rem; /* Tamaño de fuente */
+  border: 2px solid var(--color-principal); /* Borde púrpura */
+  border-radius: 6px; /* Bordes redondeados */
+  transition: border-color 0.3s ease; /* Transición suave para borde */
 }
 
 #buscador:focus,
 #filtro-categoria:focus {
-  border-color: var(--color-secundario);
-  outline: none;
+  border-color: var(--color-secundario); /* Cambia borde a color secundario al enfocar */
+  outline: none; /* Elimina outline por defecto */
 }
 
 .productos {
-  display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
+  display: grid; /* Layout en rejilla */
+  grid-template-columns: repeat(auto-fill,minmax(220px,1fr)); /* Columnas autoajustables con mínimo 220px */
+  gap: 1rem; /* Espacio entre tarjetas */
+  margin-bottom: 2rem; /* Margen inferior */
 }
 
 .card {
-  background-color: var(--color-blanco);
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.2s ease;
+  background-color: var(--color-blanco); /* Fondo blanco */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgb(0 0 0 / 0.1); /* Sombra sutil */
+  overflow: hidden; /* Recorta contenido desbordado */
+  display: flex; /* Flexbox */
+  flex-direction: column; /* En columna */
+  transition: transform 0.2s ease; /* Transición para transformaciones */
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgb(0 0 0 / 0.2);
+  transform: translateY(-5px); /* Eleva la tarjeta al pasar mouse */
+  box-shadow: 0 8px 16px rgb(0 0 0 / 0.2); /* Sombra más intensa */
 }
 
 .card img {
-  width: 100%;
-  object-fit: contain;
-  height: 180px;
-  background-color: #f9fafb;
+  width: 100%; /* Imagen ocupa todo el ancho */
+  object-fit: contain; /* Ajusta imagen manteniendo proporción */
+  height: 180px; /* Altura fija */
+  background-color: #f9fafb; /* Fondo gris muy claro */
 }
 
 .card h3 {
-  margin: 0.5rem 1rem 0.2rem;
-  font-size: 1.1rem;
-  flex-grow: 1;
+  margin: 0.5rem 1rem 0.2rem; /* Márgenes para separar texto */
+  font-size: 1.1rem; /* Tamaño ligeramente mayor */
+  flex-grow: 1; /* Ocupa espacio vertical disponible */
 }
 
 .card p {
-  margin: 0 1rem 0.8rem;
-  font-weight: 700;
-  color: var(--color-principal);
+  margin: 0 1rem 0.8rem; /* Márgenes */
+  font-weight: 700; /* Negrita */
+  color: var(--color-principal); /* Color principal (púrpura) */
 }
 
 .card button {
-  margin: 0 1rem 1rem;
-  padding: 0.5rem;
-  border: none;
-  background-color: var(--color-secundario);
-  color: var(--color-blanco);
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
+  margin: 0 1rem 1rem; /* Margen */
+  padding: 0.5rem; /* Relleno */
+  border: none; /* Sin borde */
+  background-color: var(--color-secundario); /* Fondo color secundario */
+  color: var(--color-blanco); /* Texto blanco */
+  border-radius: 6px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor de mano */
+  font-weight: 600; /* Semi negrita */
+  transition: background-color 0.3s ease; /* Transición para fondo */
 }
 
 .card button:hover,
 .card button:focus {
-  background-color: var(--color-principal);
-  outline: none;
+  background-color: var(--color-principal); /* Cambia a color principal al hover/focus */
+  outline: none; /* Sin outline */
 }
 
 .favoritos {
-  background: var(--color-blanco);
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+  background: var(--color-blanco); /* Fondo blanco */
+  padding: 1rem; /* Espaciado interno */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.1); /* Sombra */
 }
 
 .favoritos h2 {
-  margin-top: 0;
-  color: var(--color-principal);
-  font-weight: 700;
+  margin-top: 0; /* Sin margen arriba */
+  color: var(--color-principal); /* Color principal */
+  font-weight: 700; /* Negrita */
 }
 
 #lista-favoritos {
-  display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
-  gap: 1rem;
+  display: grid; /* Rejilla */
+  grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); /* Columnas autoajustables mínimo 200px */
+  gap: 1rem; /* Espacio entre elementos */
 }
 
 footer {
-  background-color: var(--color-principal);
-  color: var(--color-blanco);
-  text-align: center;
-  padding: 1rem;
-  font-size: 0.9rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
+  background-color: var(--color-principal); /* Fondo púrpura */
+  color: var(--color-blanco); /* Texto blanco */
+  text-align: center; /* Texto centrado */
+  padding: 1rem; /* Relleno */
+  font-size: 0.9rem; /* Tamaño pequeño */
+  display: flex; /* Flexbox */
+  flex-wrap: wrap; /* Permite que los hijos envuelvan */
+  justify-content: center; /* Centrado horizontal */
+  align-items: center; /* Centrado vertical */
+  gap: 1rem; /* Espacio entre elementos */
 }
 
 .footer-content a {
-  color: var(--color-secundario);
-  text-decoration: none;
+  color: var(--color-secundario); /* Color secundario para links */
+  text-decoration: none; /* Sin subrayado */
 }
 
 .footer-content a:hover {
-  text-decoration: underline;
+  text-decoration: underline; /* Subrayado al pasar mouse */
 }
 
 .foto-estudiante {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid var(--color-blanco);
+  width: 48px; /* Ancho fijo */
+  height: 48px; /* Alto fijo */
+  border-radius: 50%; /* Forma circular */
+  object-fit: cover; /* Ajusta imagen cubriendo área */
+  border: 2px solid var(--color-blanco); /* Borde blanco */
 }
-/*formulario*/
+
+/* Formulario */
 /* Solo para el formulario con id miFormulario */
 #miFormulario {
-  background: white;
-  padding: 25px 30px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  max-width: 420px;
-  width: 100%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  
+  background: white; /* Fondo blanco */
+  padding: 25px 30px; /* Relleno vertical y horizontal */
+  border-radius: 12px; /* Bordes redondeados grandes */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* Sombra */
+  max-width: 420px; /* Ancho máximo */
+  width: 100%; /* Ancho completo del contenedor */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente */
 }
 
 #miFormulario label {
-  display: block;
-  margin-bottom: 15px;
-  font-weight: 600;
-  color: #333;
+  display: block; /* Cada label en bloque */
+  margin-bottom: 15px; /* Margen inferior */
+  font-weight: 600; /* Semi negrita */
+  color: #333; /* Gris oscuro */
 }
 
 #miFormulario input[type="text"],
 #miFormulario input[type="email"],
 #miFormulario input[type="tel"],
 #miFormulario textarea {
-  width: 100%;
-  padding: 10px 14px;
-  margin-top: 6px;
-  border: 1.8px solid #ccc;
-  border-radius: 6px;
-  font-size: 15px;
-  transition: border-color 0.3s ease;
-  resize: vertical;
+  width: 100%; /* Ancho completo */
+  padding: 10px 14px; /* Relleno interno */
+  margin-top: 6px; /* Margen arriba */
+  border: 1.8px solid #ccc; /* Borde gris claro */
+  border-radius: 6px; /* Bordes redondeados */
+  font-size: 15px; /* Tamaño de texto */
+  transition: border-color 0.3s ease; /* Transición para borde */
+  resize: vertical; /* Permite cambiar tamaño vertical en textarea */
 }
 
 #miFormulario input[type="text"]:focus,
 #miFormulario input[type="email"]:focus,
 #miFormulario input[type="tel"]:focus,
 #miFormulario textarea:focus {
-  border-color: #5b9bd5;
-  outline: none;
+  border-color: #5b9bd5; /* Borde azul al enfocar */
+  outline: none; /* Sin outline */
 }
 
 #miFormulario button {
-  width: 100%;
-  padding: 12px;
-  background: #5b9bd5;
-  color: white;
-  font-weight: 700;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 12px;
-  transition: background-color 0.3s ease;
+  width: 100%; /* Botón ocupa todo el ancho */
+  padding: 12px; /* Relleno */
+  background: #5b9bd5; /* Fondo azul */
+  color: white; /* Texto blanco */
+  font-weight: 700; /* Negrita */
+  font-size: 16px; /* Tamaño mediano */
+  border: none; /* Sin borde */
+  border-radius: 8px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor pointer */
+  margin-top: 12px; /* Margen arriba */
+  transition: background-color 0.3s ease; /* Transición fondo */
 }
 
 #miFormulario button:hover {
-  background: #4178d1;
+  background: #4178d1; /* Azul más oscuro al hover */
 }
 
 #mensaje {
-  margin-top: 15px;
-  font-weight: 600;
-  text-align: center;
+  margin-top: 15px; /* Margen arriba */
+  font-weight: 600; /* Semi negrita */
+  text-align: center; /* Texto centrado */
+}
+
+/* Modo oscuro */
+body.dark-mode {
+  background-color: #121212; /* Fondo oscuro */
+  color: #f0f0f0; /* Texto claro */
+}
+
+.dark-mode header,
+.dark-mode footer,
+.dark-mode .controls,
+.dark-mode .info-api,
+.dark-mode .favoritos {
+  background-color: #1e1e1e; /* Fondo gris oscuro para secciones */
+}
+
+nav {
+  background-color: #6d126d; /* Fondo púrpura oscuro */
+  padding: 10px; /* Relleno */
+  display: flex; /* Flexbox */
+  flex-wrap: wrap; /* Permite envolver */
+  justify-content: space-around; /* Espaciado alrededor */
+}
+
+nav a {
+  color: white; /* Texto blanco */
+  text-decoration: none; /* Sin subrayado */
+  padding: 10px 15px; /* Relleno */
+  font-weight: bold; /* Negrita */
+  border-radius: 5px; /* Bordes redondeados */
+}
+
+nav a:hover {
+  background-color: #650894; /* Púrpura más oscuro al hover */
+}
+
+/* Diseño base del body */
+body {
+  margin: 0; /* Sin margen */
+  font-family: Arial, sans-serif; /* Fuente Arial */
+  background-color: #d9a1f5; /* Fondo lila claro */
+  color: #8019a8; /* Texto púrpura oscuro */
+}
+
+/* Centrar contenedor principal */
+.container {
+  max-width: 1200px; /* Ancho máximo */
+  margin: 0 auto; /* Centrado horizontal */
+  padding: 20px; /* Relleno */
+}
+
+/* Botones */
+button {
+  background-color: #8019a8; /* Púrpura oscuro */
+  border: none; /* Sin borde */
+  color: white; /* Texto blanco */
+  padding: 10px 20px; /* Relleno */
+  cursor: pointer; /* Cursor pointer */
+  border-radius: 6px; /* Bordes redondeados */
+  font-weight: bold; /* Negrita */
+  transition: background-color 0.3s ease; /* Transición suave */
+}
+
+button:hover {
+  background-color: #650894; /* Púrpura más oscuro al hover */
 }
