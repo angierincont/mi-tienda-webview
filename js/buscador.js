@@ -1,18 +1,38 @@
+// js/buscador.js
+import { obtenerProductos, mostrarProductos } from "./api.js";
+
 const inputBuscador = document.getElementById("buscador");
 
-inputBuscador.addEventListener("input", async () => {
-  const texto = inputBuscador.value.toLowerCase();
+let productosGlobal = [];
 
-  try {
-    const res = await fetch("https://api.escuelajs.co/api/v1/products");
-    const productos = await res.json();
+async function init() {
+  productosGlobal = await obtenerProductos();
 
-    const filtrados = productos.filter(p =>
-      p.title.toLowerCase().includes(texto)
-    );
+  inputBuscador.addEventListener("input", e => {
+    const valor = e.target.value.trim().toLowerCase();
+    filtrarProductos(valor, null);
+  });
+}
 
-    mostrarProductos(filtrados);
-  } catch (error) {
-    console.error("Error al buscar productos:", error);
+function filtrarProductos(texto, categoriaId) {
+  let filtrados = productosGlobal;
+
+  if (categoriaId) {
+    filtrados = filtrados.filter(p => p.category.id == categoriaId);
   }
-});
+
+  if (texto) {
+    filtrados = filtrados.filter(p =>
+      p.title.toLowerCase().includes(texto) ||
+      p.description.toLowerCase().includes(texto)
+    );
+  }
+
+  mostrarProductos(filtrados);
+}
+
+export function actualizarFiltroCategoria(categoriaId) {
+  filtrarProductos(inputBuscador.value.trim().toLowerCase(), categoriaId);
+}
+
+init();
