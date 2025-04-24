@@ -2,116 +2,141 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tienda Web - API Platzi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>API EscuelaJS - Productos</title>
   <link rel="stylesheet" href="style/style.css" />
-  <link rel="icon" href="icon.png" type="image/png" />
 </head>
 <body>
 
-  <!-- Splash -->
   <header>
-    <h1>🛍️ Tienda Web Platzi</h1>
-    <input type="text" id="buscador" placeholder="Buscar productos..." />
-    <select id="filtro-categoria">
-      <option value="">Todas las categorías</option>
-    </select>
+    <h1>platzi fake api</h1>
   </header>
 
-  <!-- Pestañas -->
   <main>
-    <!-- 🛒 Pestaña Productos -->
-    <section id="productos-tab" class="pestaña activa">
-      <h2>Productos</h2>
-      <div id="productos"></div>
+
+    <section id="descripcion-api" class="info-api">
+      <img src="img/apifafe.png" alt="Logo API EscuelaJS" class="logo-api" />
+      <div class="descripcion-cuadro">
+        <h2>Acerca de la API</h2>
+        <p>
+          Esta API pública provee datos de productos reales para practicar 
+          desarrollo web y consumir servicios REST con JavaScript.
+        </p>
+      </div>
     </section>
 
-    <!-- ❤️ Pestaña Favoritos -->
-    <section id="favoritos-tab" class="pestaña">
+    <section id="controls" class="controls">
+      <input type="text" id="buscador" placeholder="Buscar productos..." aria-label="Buscar productos" />
+      
+      <select id="filtro-categoria" aria-label="Filtrar por categoría">
+        <option value="">Todas las categorías</option>
+      </select>
+    </section>
+
+    <section id="productos" class="productos" aria-live="polite" aria-label="Lista de productos">
+      <!-- Productos cargados dinámicamente aquí -->
+    </section>
+
+    <section id="favoritos" class="favoritos">
       <h2>Favoritos</h2>
-      <div id="lista-favoritos"></div>
-    </section>
-
-    <!-- 📋 Pestaña Categorías -->
-    <section id="categorias-tab" class="pestaña">
-      <h2>Categorías</h2>
-      <ul id="lista-categorias"></ul>
-    </section>
-
-    <!-- 📝 Pestaña Registro -->
-    <section id="registro-tab" class="pestaña">
-      <h2>Registro de Usuario</h2>
-      <form id="form-registro">
-        <input type="text" placeholder="Nombre" required />
-        <input type="text" placeholder="Apellido" required />
-        <input type="email" placeholder="Correo" required />
-        <input type="text" placeholder="Usuario" required />
-        <input type="password" placeholder="Contraseña" required />
-        <input type="text" placeholder="Ciudad" required />
-        <input type="tel" placeholder="Teléfono" required />
-        <button type="submit">Registrarse</button>
-      </form>
-    </section>
-
-    <!-- 🌟 Pestaña Feature Único -->
-    <section id="feature-tab" class="pestaña">
-      <h2>Modo Oscuro</h2>
-      <div id="feature">
-        <p>Pulsa el botón para cambiar el tema de la app:</p>
-        <button id="toggle-modo">🌙 Modo oscuro</button>
+      <div id="lista-favoritos" aria-live="polite" aria-label="Lista de productos favoritos">
+        <!-- Favoritos cargados dinámicamente -->
       </div>
     </section>
 
-    <!-- 📱 Pestaña Información -->
-    <section id="info-tab" class="pestaña">
-      <h2>Info</h2>
-      <p>App desarrollada con Platzi Fake API.</p>
-    </section>
-
-    <!-- 🧾 Pestaña Presentación de la API -->
-    <section id="presentacion-api" class="pestaña">
-      <h2>Platzi Fake API</h2>
-
-      <!-- Imagen temática PNG (espacio) -->
-      <div class="api-image">
-        <p>[Aquí va la imagen PNG relacionada con la API]</p>
-        <img src="images/api-theme.png" alt="Tema Platzi API" style="max-width: 200px;" />
-      </div>
-
-      <!-- Cuadro de descripción -->
-      <div class="descripcion-api">
-        <h3>¿Qué es la Platzi Fake API?</h3>
-        <p>La Platzi Fake API es una API REST que simula un entorno de ecommerce. Permite practicar desarrollo web con datos de productos, usuarios y autenticación de manera gratuita.</p>
-      </div>
-
-      <!-- Datos adicionales -->
-      <p><strong>Versión de la app:</strong> V.1.0.0</p>
-      <p><strong>GitHub:</strong> <a href="https://github.com/angierincon123" target="_blank">angierincon123</a></p>
-    </section>
   </main>
+  <form id="miFormulario">
+    <label>Nombre:
+      <input type="text" name="nombre" required />
+    </label><br/>
+    <label>Apellido:
+      <input type="text" name="apellido" required />
+    </label><br/>
+    <label>Correo:
+      <input type="email" name="correo" required />
+    </label><br/>
+    <label>Teléfono:
+      <input type="tel" name="telefono" required />
+    </label><br/>
+    <label>Dirección:
+      <input type="text" name="direccion" required />
+    </label><br/>
+    <label>Ciudad:
+      <input type="text" name="ciudad" required />
+    </label><br/>
+    <label>Comentario:
+      <textarea name="comentario" rows="3" required></textarea>
+    </label><br/>
+    <button type="submit">Enviar</button>
+  </form>
+  <div id="mensaje"></div>
+  <!-- Firebase App (the core Firebase SDK) -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<!-- Firebase Firestore -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 
-  <!-- Menú inferior -->
-  <nav>
-    <button onclick="mostrarPestaña('productos-tab')">🛒</button>
-    <button onclick="mostrarPestaña('favoritos-tab')">❤️</button>
-    <button onclick="mostrarPestaña('registro-tab')">📝</button>
-    <button onclick="mostrarPestaña('feature-tab')">✨</button>
-    <button onclick="mostrarPestaña('presentacion-api')">🧾</button>
-  </nav>
+<script>
+  // Configuración de Firebase (tuya)
+  const firebaseConfig = {
+    apiKey: "AIzaSyD159PzqzNXQpMutpECpWzJcQ_62_DSnYU",
+    authDomain: "tiendaplatzi-a6241.firebaseapp.com",
+    projectId: "tiendaplatzi-a6241",
+    storageBucket: "tiendaplatzi-a6241.firebasestorage.app",
+    messagingSenderId: "286259925506",
+    appId: "1:286259925506:web:71ed6f6a489aa197b9cd1b"
+  };
 
-  <!-- Pie de página -->
-  <footer style="text-align: center; padding: 1rem; background-color: rgba(0,0,0,0.6); color: #00ffd0;">
-    Desarrollado por Angie Rincón
+  // Inicializar Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  // Referencia al formulario y mensaje
+  const form = document.getElementById('miFormulario');
+  const mensajeDiv = document.getElementById('mensaje');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    // Tomar datos del formulario
+    const datos = {
+      nombre: form.nombre.value.trim(),
+      apellido: form.apellido.value.trim(),
+      correo: form.correo.value.trim(),
+      telefono: form.telefono.value.trim(),
+      direccion: form.direccion.value.trim(),
+      ciudad: form.ciudad.value.trim(),
+      comentario: form.comentario.value.trim(),
+      fecha: new Date()
+    };
+
+    // Guardar en Firestore en colección 'usuarios'
+    db.collection('usuarios').add(datos)
+      .then(() => {
+        mensajeDiv.textContent = 'Datos guardados correctamente ✅';
+        mensajeDiv.style.color = 'lightgreen';
+        form.reset();
+      })
+      .catch(error => {
+        mensajeDiv.textContent = 'Error al guardar: ' + error.message;
+        mensajeDiv.style.color = 'red';
+      });
+  });
+</script>
+
+  
+
+  <footer>
+    <div class="footer-content">
+      <p><strong>Estudiante:</strong> Angie Rincon</p>
+      <p><strong>GitHub:</strong> <a href="https://github.com/angierincont" target="_blank" rel="noopener noreferrer">angierincont</a></p>
+      <p><strong>Versión de la app:</strong> V.1.0.0</p>
+    </div>
   </footer>
 
-  <!-- Scripts -->
-  <script src="js/navegación.js"></script>
-  <script src="js/api.js"></script>
-  <script src="js/buscador.js"></script>
-  <script src="js/filtro.js"></script>
-  <script src="js/favorites.js"></script>
-  <script src="js/Feature.js"></script>
-  <script type="module" src="js/register.js"></script>
+  <script type="module" src="js/api.js"></script>
+  <script type="module" src="js/buscador.js"></script>
+  <script type="module" src="js/filtro.js"></script>
+  <script src="js/favoritos.js"></script>
 
 </body>
 </html>
