@@ -1,58 +1,59 @@
-const API_URL = "https://api.escuelajs.co/api/v1/products";
-const CATEGORIAS_URL = "https://api.escuelajs.co/api/v1/categories";
+// js/api.js
+export const API_URL = "https://api.escuelajs.co/api/v1/products";
+export const CATEGORIAS_URL = "https://api.escuelajs.co/api/v1/categories";
+
 const contenedor = document.getElementById("productos");
 const filtroSelect = document.getElementById("filtro-categoria");
-const categoriasLista = document.getElementById("lista-categorias");
 
-async function obtenerProductos() {
+export async function obtenerProductos() {
   try {
     const res = await fetch(API_URL);
+    if (!res.ok) throw new Error("Error en la respuesta");
     const productos = await res.json();
     mostrarProductos(productos);
+    return productos;
   } catch (error) {
     console.error("Error al obtener productos:", error);
+    contenedor.innerHTML = "<p>Error al cargar productos.</p>";
+    return [];
   }
 }
 
-function mostrarProductos(productos) {
+export function mostrarProductos(productos) {
   contenedor.innerHTML = "";
+  if (productos.length === 0) {
+    contenedor.innerHTML = "<p>No se encontraron productos.</p>";
+    return;
+  }
   productos.forEach(producto => {
     const div = document.createElement("div");
     div.classList.add("card");
     div.innerHTML = `
-      <img src="${producto.images[0]}" alt="${producto.title}" />
+      <img src="${producto.images[0]}" alt="${producto.title}" loading="lazy" />
       <h3>${producto.title}</h3>
-      <p>$${producto.price}</p>
-      <button onclick="agregarAFavoritos(${producto.id})">❤️ Favorito</button>
+      <p>$${producto.price.toFixed(2)}</p>
+      <button data-id="${producto.id}">Agregar a favoritos</button>
     `;
     contenedor.appendChild(div);
   });
 }
 
-async function obtenerCategorias() {
+export async function cargarCategorias() {
   try {
     const res = await fetch(CATEGORIAS_URL);
+    if (!res.ok) throw new Error("Error en la respuesta de categorías");
     const categorias = await res.json();
-
-    categorias.forEach(cat => {
-      const option = document.createElement("option");
-      option.value = cat.id;
-      option.textContent = cat.name;
-      filtroSelect.appendChild(option);
-
-      if (categoriasLista) {
-        const li = document.createElement("li");
-        li.textContent = cat.name;
-        categoriasLista.appendChild(li);
-      }
-    });
+    cargarOpcionesCategorias(categorias);
   } catch (error) {
-    console.error("Error al obtener categorías:", error);
+    console.error("Error al cargar categorías:", error);
   }
 }
 
-// Cargar productos y categorías al inicio
-document.addEventListener("DOMContentLoaded", () => {
-  obtenerProductos();
-  obtenerCategorias();
-});
+function cargarOpcionesCategorias(categorias) {
+  categorias.forEach(categoria => {
+    const option = document.createElement("option");
+    option.value = categoria.id;
+    option.textContent = categoria.name;
+    filtroSelect.appendChild(option);
+  });
+}
