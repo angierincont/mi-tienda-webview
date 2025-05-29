@@ -5,6 +5,10 @@
 <!-- Elemento raíz del documento HTML, con atributo lang="es" para indicar que el idioma es español -->
 
 <head>
+
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0d6efd">
+
   <meta charset="UTF-8" />
   <!-- Define la codificación de caracteres como UTF-8 -->
 
@@ -264,6 +268,18 @@
 
   <script src="js/favoritos.js"></script>
   <!-- Script JavaScript para gestionar los productos favoritos -->
+
+  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js')
+      .then(function(registration) {
+        console.log('Service Worker registrado con éxito:', registration);
+      })
+      .catch(function(error) {
+        console.log('Error al registrar el Service Worker:', error);
+      });
+  }
+</script>
 
 </body>
 
